@@ -1,0 +1,5 @@
+flight_type,flight_type_distance_gcd_km_min,flight_type_distance_gcd_km_max,delay_min_minutes,delay_max_minutes,compensation,uptake
+long,3500,99999,180,240,300.0,11.0
+long,3500,99999,240,99999,600.0,11.0
+medium,1500,3500,180,99999,400.0,11.0
+short,0,1500,180,99999,250.0,11.0

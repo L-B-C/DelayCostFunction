@@ -1,0 +1,176 @@
+icao_id,iata,airport_name,mean_txo,std_deviation,10th_perc,median,90th_perc,source
+BIKF,KEF,Keflavik,11,3,7,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+CYUL,YUL,Montreal/Dorval,18,7,13,17,24,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+CYVR,YVR,Vancouver Intl,18,6,14,18,24,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+CYYC,YYC,Calgary Intl,18,8,11,17,24,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+CYYZ,YYZ,Toronto Intl/L.B. PE,18,6,13,17,24,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+DGAA,ACC,Accra,10,5,6,8,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+DNMM,LOS,Lagos,15,5,10,14,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+DTMB,MIR,Monastir/Habib Bourg,11,3,8,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EBBR,BRU,Brussels,12,4,8,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDB,SXF,Schoenefeld?Berlin,12,7,7,10,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDF,FRA,Frankfurt,13,5,7,13,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDG,FMO,Muenster?Osnabrueck,6,2,4,5,9,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDH,HAM,Hamburg,9,4,5,8,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDK,CGN,Cologne/Bonn,11,4,7,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDL,DUS,Dusseldorf,12,4,8,12,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDM,MUC,Munich,13,5,8,12,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDS,STR,Stuttgart,10,4,6,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDT,TXL,Berlin?Tegel,11,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EDDV,HAJ,Hanover,10,3,6,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EFHK,HEL,Helsinki?Vantaa,10,3,7,9,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EFOU,OUL,Oulu,5,2,3,4,7,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGAA,BFS,Belfast/Aldergrove,10,3,7,9,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGBB,BHX,Birmingham,12,4,8,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGCC,MAN,Manchester,15,6,9,14,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGGD,BRS,Bristol/Lulsgate,10,3,7,9,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGGP,LPL,Liverpool,11,6,8,10,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGGW,LTN,London/Luton,13,5,9,12,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGKK,LGW,London/Gatwick,17,9,10,16,25,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGLC,LCY,London/City,10,4,5,9,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGLL,LHR,London/Heathrow,22,8,14,21,30,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGNT,NCL,Newcastle,11,5,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGNX,EMA,East Midlands,11,4,8,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGPF,GLA,Glasgow,11,3,8,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGPH,EDI,Edinburgh,11,4,8,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGSS,STN,London/Stansted,14,7,8,12,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EGTE,EXT,Exeter,10,3,7,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EHAM,AMS,Amsterdam,14,5,8,13,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EIDW,DUB,Dublin,15,5,9,15,22,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EINN,SNN,Shannon,11,3,8,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EKBI,BLL,Billund,9,4,5,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EKCH,CPH,Copenhagen/Kastrup,11,4,8,11,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ENAT,ALF,Alta,5,3,2,4,8,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ENEV,EVE,Evenes,7,5,3,7,10,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ENGM,OSL,Oslo/Gardermoen,10,4,6,9,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EPKK,KRK,Krakow/Balice,9,3,6,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EPKT,KTW,Katowice/Pyrzowice,11,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EPWA,WAW,Warsaw/Okecie,12,5,7,12,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EPWR,WRO,Wroclaw/Strachowice,8,3,5,8,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ESGG,GOT,Gotenborg/Landvetter,9,3,6,8,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ESSA,ARN,Stockholm/Arlanda,10,3,7,9,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EVRA,RIX,Riga Intl,10,4,5,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+EYKA,KUN,Kaunas Intl,9,3,5,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GCFV,FUE,Fuerteventura,11,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GCLP,LPA,Las Palmas,12,4,8,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GCRR,ACE,Arrecife Lanzarote,10,4,7,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GCTS,TFS,Tenerife Sur/Reina S,10,3,7,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GMAD,AGA,Agadir/Al?Massira,9,3,6,9,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GMMN,CMN,Casablanca/Mohammed,12,4,9,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GMMX,RAK,Marrakech,12,5,8,11,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GMTT,TNG,Tanger/Boukhalf,9,3,6,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+GOOY,DKR,Dakar,15,5,9,14,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+HECA,CAI,Cairo,15,5,10,14,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+HEGN,HRG,Hurghada,14,5,10,13,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+HESH,SSH,Sharm El Sheikh,12,5,7,11,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+HKJK,NBO,Nairobi,14,4,10,13,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KATL,ATL,Atlanta Intl/Hartsfi,24,12,14,21,36,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KBOS,BOS,Boston,18,6,12,17,25,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KDFW,DFW,Dallas/Fort Worth,18,6,13,16,23,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KEWR,EWR,Newark,26,14,14,23,41,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KIAD,IAD,Washington,21,13,13,18,31,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KIAH,IAH,Houston Intl/Texas,19,8,13,18,27,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KJFK,JFK,New York,36,19,19,31,57,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KLAX,LAX,Los Angeles,17,5,12,16,23,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KMCO,MCO,Orlando Intl/Florida,15,6,11,13,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KMIA,MIA,Miami Intl/Florida,20,8,13,19,29,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KORD,ORD,Chicago O Hare Intl,22,12,12,19,32,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KPHL,PHL,Philadelphia,31,17,16,26,49,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KSEA,SEA,Seattle/Tacoma Intl,16,3,12,15,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KSFB,SFB,Orlando/Central Fl.,13,4,9,13,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+KSFO,SFO,San Francisco,22,6,16,21,29,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LBSF,SOF,Sofia,11,4,8,11,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LBWN,VAR,Varna,8,3,5,7,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LCLK,LCA,Larnaca,14,4,10,14,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LCPH,PFO,Paphos,9,4,6,8,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEAL,ALC,Alicante,11,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEBL,BCN,Barcelona,15,6,9,14,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEIB,IBZ,Ibiza,9,4,5,8,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEMD,MAD,Madrid/Barajas,19,8,11,17,28,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEMG,AGP,Malaga,12,4,8,11,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEPA,PMI,Palma De Mallorca,13,5,8,12,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LEVC,VLC,Valencia,10,4,6,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFBD,BOD,Bordeaux/Merignac,10,3,7,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFBO,TLS,Toulouse/Blagnac,10,3,7,10,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFLL,LYS,Lyon/Sartolas,11,4,7,10,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFML,MRS,Marseille/Provence,11,3,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFMN,NCE,Nice,11,3,8,11,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFPG,CDG,Paris/Charles?De?Gau,17,6,10,16,24,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LFPO,ORY,Paris/Orly,12,5,8,11,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGAV,ATH,Athens,13,4,9,13,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGIR,HER,Iraklion/Nikos/Kazan,9,5,5,9,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGKO,KGS,Kos,8,5,5,7,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGRP,RHO,Diagoras,8,3,5,8,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGSA,CHQ,Khania/Souda,10,4,5,9,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGSR,JTR,Santorini,8,3,5,8,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGTS,SKG,Makedonia,10,4,5,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LGZA,ZTH,Zakinthos,8,4,4,7,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LHBP,BUD,Budapest/Ferihegy,9,3,5,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LICC,CTA,Catania Fontanarossa,12,5,8,11,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LICJ,PMO,Palermo Punta Raisi,11,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LIMC,MXP,Milan/Malpensa,12,5,8,12,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LIME,BGY,Bergamo/Orio Alserio,13,4,9,13,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LIPZ,VCE,Venice/Tessera,11,4,7,10,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LIRF,FCO,Rome/Fiumicino,19,8,10,17,29,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LIRN,NAP,Napoli Capodichino,10,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LKPR,PRG,Prague/Ruzyne,10,4,5,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LKTB,BRQ,Brno Turany,6,3,3,5,10,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LLBG,TLV,Tel Aviv/Ben Gurion,17,6,11,16,25,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LMML,MLA,Malta/Luqa,8,4,4,7,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LOWW,VIE,Vienna,11,5,5,11,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LPFR,FAO,Faro,11,4,8,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LPLA,TER,Lajes Terceira,6,3,3,5,10,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LPPR,OPO,Porto,10,4,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LPPT,LIS,Lisbon,12,4,8,12,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LROP,OTP,Otopeni?Intl.,11,4,6,10,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LSGG,GVA,Geneva,11,4,6,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LSZH,ZRH,Zurich,11,5,6,11,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTAC,ESB,Ankara?Esenboga,12,4,8,11,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTAF,ADA,Adana?Sakirpasa,10,3,6,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTAI,AYT,Antalya,16,6,10,15,23,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTAJ,GZT,Gaziantep,10,3,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTBA,IST,Istanbul/Ataturk,20,9,11,18,32,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTBJ,ADB,Izmir?Adnan?Menderes,11,3,9,11,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTBS,DLM,Mugla?Dalaman,11,4,8,11,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LTFE,BJV,Milas/Bodrum,10,3,7,10,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LUKK,KIV,Kishinev,9,3,6,9,13,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LWSK,SKP,Skopje,9,5,6,8,12,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LYBE,BEG,Surcin?Beograd,10,3,6,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+LZIB,BTS,Bratislava Ivanka,9,4,5,9,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+MDPC,PUJ,Punta Cana,14,5,10,13,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+MMMX,MEX,Mexico City,21,7,15,20,30,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+MMUN,CUN,Cancun Intl,14,4,10,14,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+MUHA,HAV,Habana Intl/Jose Mar,16,4,12,15,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OBBI,BAH,Bahrain?Intl,16,5,11,15,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OEJN,JED,Jeddah,15,5,10,15,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OERK,RUH,Riyadh King Khalid,17,5,12,16,22,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OJAI,AMM,Amman/Queen Alia,13,4,10,12,17,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OKBK,KWI,Kuwait,18,6,12,17,24,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OLBA,BEY,Beirut,12,4,9,12,16,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OMAA,AUH,Abu Dhabi Intl,17,4,12,16,22,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OMDB,DXB,Dubai,17,5,12,16,22,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+OMSJ,SHJ,Sharjah,15,3,11,14,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+RJAA,NRT,New Tokyo,20,8,13,18,30,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+RJBB,KIX,Kansai Intl,15,4,11,14,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+SAEZ,EZE,Buenos Aires/Ezeiza,16,6,11,15,22,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+SBGL,GIG,Rio De Janeiro,19,7,12,18,28,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+SBGR,GRU,Sao Paulo,18,6,12,16,27,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+SPIM,LIM,Lima Intl/Chavez,15,4,12,15,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+SVMI,CCS,Caracas Maiquetia,17,7,10,15,25,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+TFFR,PTP,Pointe?A?Pitre/Le Ra,17,4,13,16,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+TNCC,CUR,Curacao Intl/Aeropor,14,4,11,13,19,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UAAA,ALA,Alma Ata,14,5,9,13,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UACC,TSE,Tselinograd,16,4,11,15,21,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UBBB,GYD,Baku,11,4,7,11,15,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UKBB,KBP,Kiev ? Borispol,12,5,7,12,18,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ULLI,LED,Sankt?Peterburg,15,6,8,15,23,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UMMS,MSQ,Minsk?2,10,3,6,10,14,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+USSS,SVX,Yekaterinburg,14,4,10,13,20,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UUDD,DME,Moskva/Domodedovo,16,8,10,14,23,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+UUEE,SVO,Moskva/Sheremetyevo,16,8,10,14,23,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+VABB,BOM,Bombay,17,6,11,16,25,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+VHHH,HKG,Hong Kong Intl,21,7,15,20,28,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+VIDP,DEL,Delhi,24,7,17,23,32,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+WSSS,SIN,Singapore/Changi,18,5,12,17,25,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ZBAA,PEK,Beijing,24,11,14,21,39,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf
+ZSPD,PVG,Shanghai Pudong Intl,24,12,15,22,32,IATA Summer Season 2010 - from coda-taxi-out-summer-2010.pdf

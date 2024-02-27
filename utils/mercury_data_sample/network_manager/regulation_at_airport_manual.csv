@@ -1,0 +1,7 @@
+reg_scenario_id,icao_id,airport_set,reg_sid,reg_reason,reg_period_start,reg_period_end,capacity,reg_resaon
+Hubs1,EGLL,,EGLL_1,W,2018-09-12 05:00:00,2018-09-12 13:00:00,44,
+Hubs1,EHAM,,EHAM_1,W,2018-09-12 04:00:00,2018-09-12 12:00:00,45,
+Hubs1,LFPG,,LFPG_1,W,2018-09-12 04:00:00,2018-09-12 12:00:00,54,
+Hubs2,LSZH,,LSZH_1,W,2018-09-12 09:00:00,2018-09-12 13:00:00,20,
+Hubs3,LFPG,,LFPG_1,W,2018-09-12 09:00:00,2018-09-12 13:00:00,20,
+Hubs3,LSZH,,LSZH_1,W,2018-09-12 09:00:00,2018-09-12 13:00:00,20,

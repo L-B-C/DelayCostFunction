@@ -1,0 +1,2 @@
+id,scenario,regulations_airport_day,description,buffers,delays,uptake,manual_airport_regulations,flight_set,main_scenario,sub_scenario,priority,stochastic_airport_regulations
+-1,,,demo with 1000 flights,D,D,D,,4.0,demo,demo,,R
