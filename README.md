@@ -114,8 +114,8 @@ The design of the software has been significantly influenced by a thorough analy
 These resources have been invaluable in shaping the methodologies and functionalities integrated into the developed software, offering a comprehensive understanding of delay costs and aviation dynamics.
 
 ## Reference Data
-Data from the Mercury project was used
-[most up-to-date dataset Mercury](https://zenodo.org/records/10246302)
-[dataset Mercury V3](https://zenodo.org/records/10222526)
+Data from the Mercury project was used \
+[most up-to-date dataset Mercury](https://zenodo.org/records/10246302) \
+[dataset Mercury V3](https://zenodo.org/records/10222526) 
 
 
