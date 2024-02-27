@@ -29,8 +29,8 @@ def get_scenario(scenario: str):
 # https://www.beacon-sesar.eu/wp-content/uploads/2022/10/893100-BEACON-D3.2-Industry-briefing-on-updates-to-the-European-cost-of-delay-V.01.01.00-1.pdf
 def get_fixed_cost_scenario(is_LCC_airline: bool, destination_airport_ICAO: str) -> str:
     if is_LCC_airline:
-        return "low"
+        return "LowScenario"
     else:
         if is_group_1_airport(destination_airport_ICAO):
-            return "high"
-    return "base"
+            return "HighScenario"
+    return "BaseScenario"

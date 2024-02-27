@@ -12,6 +12,7 @@ from CostPackage.Maintenance.maintenance_costs import get_maintenance_costs_from
     InvalidMaintenanceCostsValueError
 from CostPackage.Passenger.Hard.hard_costs import get_hard_costs
 from CostPackage.Passenger.Soft.soft_costs import get_soft_costs
+from CostPackage.Scenario.scenario import get_fixed_cost_scenario
 
 
 def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NECESSARY PARAMETERS
@@ -119,6 +120,15 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         if (destination_airport is not None) and (
                 is_valid_airport_icao(airport_icao=destination_airport.strip().upper())):
             destination_airport = destination_airport
+
+        if is_low_cost_airline is not None or destination_airport is not None:
+            scenario = get_fixed_cost_scenario(is_low_cost_airline, destination_airport)
+            crew_costs_scenario = scenario
+            maintenance_costs_scenario = scenario
+            fuel_costs_scenario = scenario
+            passenger_scenario = scenario
+
+
 
         # CREW COSTS
         # NO crew costs input
