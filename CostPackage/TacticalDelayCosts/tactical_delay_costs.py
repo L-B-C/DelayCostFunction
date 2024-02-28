@@ -23,8 +23,8 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                              crew_costs_exact_value: float = None, crew_costs_scenario: str = None,
                              maintenance_costs_exact_value: float = None, maintenance_costs_scenario: str = None,
                              fuel_costs_exact_value: float = None, fuel_costs_scenario: str = None,
-                             passenger_hard_costs: float = None, passenger_soft_costs: float = None,
-                             missed_connection_passengers: List[Tuple] = None
+                             missed_connection_passengers: List[Tuple] = None,
+                             curfew: Union[tuple[float, int], float] = None
                              ) -> Callable:
     """Generate cost function of delay of a given flight according to the specifics
     Parameters:
@@ -41,7 +41,8 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             "high" 95% of seats capacity
             for wide-body aircraft the capacity is set to 85%
         is_low_cost_airline: bool=None
-            boolean value set to true if flight is considered low-cost
+            boolean value set to true if airline is Low-Cost Carrier (LCC), if true
+            sets all the cost scenarios to low
         flight_length: float=None
             Length of flight in kilometers to calculate the type of haul
             (actual fuel costs can be calculated only if provided)
@@ -78,10 +79,6 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         fuel_costs_scenario: str = None
             can be either "low", "base" or "high"
             FUEL COSTS CURRENTLY UNAVAILABLE FOR CALCULATION
-        passenger_hard_costs: float = None
-            passenger hard costs in EUR passed directly if known
-        passenger_soft_costs: float = None
-            passenger soft costs in EUR passed directly if known
         missed_connection_passengers: List[Tuple] = None
              list of tuples. Each tuple represents one passenger,
              its composition is (delay threshold, delay perceived).
@@ -89,6 +86,8 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
              The delay perceived is the delay at the passenger final destination,
              generally computed considering the next available flight of the same airline which carries
              the passenger to its final destination
+        curfew: Tuple[curfew_time: float, n_passenger: int] or float, default None,
+             react_curfew: Union[tuple[float, str], tuple[float, int]] = None
 
         """
 
@@ -121,14 +120,16 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                 is_valid_airport_icao(airport_icao=destination_airport.strip().upper())):
             destination_airport = destination_airport
 
+        # If airline is LCC sets all costs scenario to low,
+        # elif destination airport is in group 1 airports (more than 25 million passengers) set scenario to high
+        # else scenario default is base
         if is_low_cost_airline is not None or destination_airport is not None:
-            scenario = get_fixed_cost_scenario(is_low_cost_airline, destination_airport)
-            crew_costs_scenario = scenario
-            maintenance_costs_scenario = scenario
-            fuel_costs_scenario = scenario
-            passenger_scenario = scenario
-
-
+            scenario = get_fixed_cost_scenario(is_LCC_airline=is_low_cost_airline,
+                                               destination_airport_ICAO=destination_airport)
+            crew_costs_scenario = scenario if crew_costs_scenario is None else crew_costs_scenario
+            maintenance_costs_scenario = scenario if maintenance_costs_scenario is None else maintenance_costs_scenario
+            fuel_costs_scenario = scenario if fuel_costs_scenario is None else fuel_costs_scenario
+            passenger_scenario = scenario if passenger_scenario is None else passenger_scenario
 
         # CREW COSTS
         # NO crew costs input
@@ -200,29 +201,21 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                                                                          scenario=passenger_scenario, haul=haul)
                 missed_connection_passengers_soft_costs = get_soft_costs(passengers=1, scenario=passenger_scenario)
 
-                # Set only care if delay is less than passenger connection threshold
-                def hard_costs_considered_passenger(delay, passenger):
-                    if delay < passenger[0]:
-                        return missed_connection_passengers_hard_costs(delay)
-                    else:
-                        return missed_connection_passengers_hard_costs(passenger[1])
-
-                # Set 0 if delay < passenger connection threshold
-                def soft_costs_considered_passenger(delay, passenger):
-                    if delay < passenger[0]:
-                        return missed_connection_passengers_soft_costs(delay)
-                    else:
-                        return missed_connection_passengers_hard_costs(passenger[1])
+                def considered_passenger_costs(delay, passenger, cost_type):
+                    # Set only care if delay is less than passenger connection threshold
+                    # Set 0 if delay < passenger connection threshold
+                    cost_function = missed_connection_passengers_hard_costs if cost_type == 'hard' \
+                        else missed_connection_passengers_soft_costs
+                    return cost_function(delay if delay < passenger[0] else passenger[1])
 
                 def passengers_costs(delay):
                     return (passengers_hard_costs(delay) + passengers_soft_costs(delay) +
-                            sum(hard_costs_considered_passenger(delay, passenger) for passenger in
+                            sum(considered_passenger_costs(delay, passenger, 'hard') for passenger in
                                 missed_connection_passengers) +
-                            sum(soft_costs_considered_passenger(delay, passenger) for passenger in
+                            sum(considered_passenger_costs(delay, passenger, 'soft') for passenger in
                                 missed_connection_passengers))
             else:
-                def passengers_costs(delay):
-                    return passengers_hard_costs(delay) + passengers_soft_costs(delay)
+                return lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay)
 
     except AircraftClusterError as aircraft_cluster_error:
         print(aircraft_cluster_error.message)
