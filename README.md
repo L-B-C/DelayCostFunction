@@ -53,10 +53,6 @@ The `get_tactical_delay_costs` function calculates the cost of delay for a speci
 
 - `fuel_costs_scenario` (str, optional): Fuel cost scenario. Note: Fuel costs are currently unavailable for calculation.
 
-- `passenger_hard_costs` (float, optional): Directly provided passenger hard costs in EUR/min.
-
-- `passenger_soft_costs` (float, optional): Directly provided passenger soft costs in EUR/min.
-
 - `missed_connection_passengers` (List[Tuple], optional): List of tuples representing passengers who may miss connections. Each tuple contains the delay threshold and the perceived delay at the final destination.
 
 Note: Parameters marked as "required" must be provided for the function to execute correctly.
