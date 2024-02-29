@@ -5,6 +5,7 @@ from typing import Callable, List, Tuple, Union
 from CostPackage.Aircraft.aircraft_cluster import get_aircraft_cluster, AircraftClusterError
 from CostPackage.Airport.airport import is_valid_airport_icao, AirportCodeError
 from CostPackage.Crew.crew_costs import get_crew_costs_from_exact_value, get_crew_costs, InvalidCrewCostsValueError
+from CostPackage.Curfew.curfew_costs import get_curfew_costs_from_exact_value, get_curfew_costs
 from CostPackage.FlightPhase.flight_phase import get_flight_phase, FlightPhaseError
 from CostPackage.Fuel.fuel_costs import get_fuel_costs_from_exact_value, InvalidFuelCostsValueError
 from CostPackage.Haul.haul import get_haul, HaulError
@@ -108,7 +109,14 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
 
     try:
         aircraft_cluster = get_aircraft_cluster(aircraft_type)
+
         flight_phase = get_flight_phase(flight_phase_input.strip().upper())
+
+        number_missed_connection_passengers = 0 if missed_connection_passengers is None else len(
+            missed_connection_passengers)
+
+        if passengers_number is not None:
+            passengers_number = passengers_number - number_missed_connection_passengers
 
         if flight_length is not None:
             haul = get_haul(flight_length)
@@ -177,45 +185,44 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         # Curfew not violated and no curfew costs provided
         if curfew_violated is False and curfew_costs_exact_value is None:
             curfew_costs = zero_costs()
-        # elif curfew_costs_exact_value is not None and curfew_violated is True:
-        #    curfew_costs = get_curfew_costs_from_exact_value()
-        # elif curfew_violated is True and curfew_costs_exact_value is None:
-        #   curfew_costs = get_curfew_costs()
+        # Curfew costs base on exact value
+        elif curfew_costs_exact_value is not None and curfew_violated is True:
+            curfew_costs = get_curfew_costs_from_exact_value(curfew_costs_exact_value)
+        elif curfew_violated is True and curfew is None:
+            curfew_costs = zero_costs()
+        elif curfew_violated is True and curfew is not None:
+            curfew_threshold = curfew[0] if curfew is tuple else curfew
+            curfew_passengers = curfew[1] if curfew is tuple else passengers_number + number_missed_connection_passengers
+            curfew_costs = get_curfew_costs(aircraft_cluster=aircraft_cluster, curfew_passengers=curfew_passengers)
+        else:  # Both parameters are not None, situation managed as a conflict
+            raise FunctionInputParametersConflictError("CURFEW")
 
         # PASSENGER COSTS
-        if passengers_number is not None and passenger_scenario is not None:
-            if missed_connection_passengers is None:
-                number_missed_connection_passengers = 0
-            else:
-                number_missed_connection_passengers = len(missed_connection_passengers)
-            passengers_number = passengers_number - number_missed_connection_passengers
+        # Soft and Hard costs of passengers who didn't lose the connection
+        passengers_hard_costs = get_hard_costs(passengers=passengers_number, scenario=passenger_scenario, haul=haul)
+        passengers_soft_costs = get_soft_costs(passengers=passengers_number, scenario=passenger_scenario)
 
-            # Soft and Hard costs of passengers who didn't lose the connection
-            passengers_hard_costs = get_hard_costs(passengers=passengers_number, scenario=passenger_scenario, haul=haul)
-            passengers_soft_costs = get_soft_costs(passengers=passengers_number, scenario=passenger_scenario)
+        # Soft and Hard costs of passengers with missed connection
+        if number_missed_connection_passengers > 0:
+            # Hard and soft costs for a single passenger
+            missed_connection_passengers_hard_costs = get_hard_costs(passengers=1, scenario=passenger_scenario,
+                                                                     haul=haul)
+            missed_connection_passengers_soft_costs = get_soft_costs(passengers=1, scenario=passenger_scenario)
 
-            # Soft and Hard costs of passengers with missed connection
-            if number_missed_connection_passengers > 0:
-                # Hard and soft costs for a single passenger
-                missed_connection_passengers_hard_costs = get_hard_costs(passengers=1,
-                                                                         scenario=passenger_scenario, haul=haul)
-                missed_connection_passengers_soft_costs = get_soft_costs(passengers=1, scenario=passenger_scenario)
+            def considered_passenger_costs(delay, passenger, cost_type):
+                # Set only care if delay is less than passenger connection threshold
+                # Set 0 if delay < passenger connection threshold
+                cost_function = missed_connection_passengers_hard_costs if cost_type == 'hard' else missed_connection_passengers_soft_costs
+                return cost_function(delay if delay < passenger[0] else passenger[1])
 
-                def considered_passenger_costs(delay, passenger, cost_type):
-                    # Set only care if delay is less than passenger connection threshold
-                    # Set 0 if delay < passenger connection threshold
-                    cost_function = missed_connection_passengers_hard_costs if cost_type == 'hard' \
-                        else missed_connection_passengers_soft_costs
-                    return cost_function(delay if delay < passenger[0] else passenger[1])
-
-                def passengers_costs(delay):
-                    return (passengers_hard_costs(delay) + passengers_soft_costs(delay) +
-                            sum(considered_passenger_costs(delay, passenger, 'hard') for passenger in
-                                missed_connection_passengers) +
-                            sum(considered_passenger_costs(delay, passenger, 'soft') for passenger in
-                                missed_connection_passengers))
-            else:
-                return lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay)
+            def passengers_costs(delay):
+                return (passengers_hard_costs(delay) + passengers_soft_costs(delay) + sum(
+                    considered_passenger_costs(delay, passenger, 'hard') for passenger in
+                    missed_connection_passengers) + sum(
+                    considered_passenger_costs(delay, passenger, 'soft') for passenger in
+                    missed_connection_passengers))
+        else:
+            return lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay)
 
     except AircraftClusterError as aircraft_cluster_error:
         print(aircraft_cluster_error.message)
@@ -245,4 +252,5 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         print(print(f"An unexpected exception occurred: {e}"))
 
     finally:
-        return lambda delay: maintenance_costs(delay) + crew_costs(delay) + passengers_costs(delay)
+        return lambda delay: maintenance_costs(delay) + crew_costs(delay) + passengers_costs(delay) + curfew_costs(
+            delay)

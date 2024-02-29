@@ -22,11 +22,12 @@ def is_valid_airport_icao(airport_icao: str):
         raise AirportCodeError
 
 
-def get_airport_country(airport_icao: str):
-    if is_valid_airport_icao(airport_icao):
-        return df_airports.query("ICAO==airport_icao")["Country"]
+# def get_airport_country(airport_icao: str):
+#     if is_valid_airport_icao(airport_icao):
+#         return df_airports.query("ICAO==airport_icao")["Country"]
 
 
+# airport is in group 1 if it has more than 25 million passengers
 def is_group_1_airport(airport_icao: str):
     if is_valid_airport_icao(airport_icao):
         if airport_icao in group_1_airports.to_list():
