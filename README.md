@@ -54,11 +54,14 @@ The `get_tactical_delay_costs` function calculates the cost of delay for a speci
 - `fuel_costs_scenario` (str, optional): Fuel cost scenario. Note: Fuel costs are currently unavailable for calculation.
 
 - `missed_connection_passengers` (List[Tuple], optional): List of tuples representing passengers who may miss connections. Each tuple contains the delay threshold and the perceived delay at the final destination.
+  
+- `curfew` (Union[Tuple[float, int], float], optional): Information regarding the curfew. If a tuple, it includes the curfew time and the number of passengers affected. 
+
 
 Note: Parameters marked as "required" must be provided for the function to execute correctly.
  
 ## Output
-Lambda function: cost function of delay based on considered costs
+Lambda function: total of considered costs expressed in EUR as a function of delay
 
 ## Cost Scenarios
 
