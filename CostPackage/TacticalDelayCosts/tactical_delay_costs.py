@@ -13,6 +13,7 @@ from CostPackage.Maintenance.maintenance_costs import get_maintenance_costs_from
     InvalidMaintenanceCostsValueError
 from CostPackage.Passenger.Hard.hard_costs import get_hard_costs
 from CostPackage.Passenger.Soft.soft_costs import get_soft_costs
+from CostPackage.Passenger.passenger import get_passengers
 from CostPackage.Scenario.scenario import get_fixed_cost_scenario
 
 
@@ -112,12 +113,6 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
 
         flight_phase = get_flight_phase(flight_phase_input.strip().upper())
 
-        number_missed_connection_passengers = 0 if missed_connection_passengers is None else len(
-            missed_connection_passengers)
-
-        if passengers_number is not None:
-            passengers_number = passengers_number - number_missed_connection_passengers
-
         if flight_length is not None:
             haul = get_haul(flight_length)
 
@@ -128,9 +123,9 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                 is_valid_airport_icao(airport_icao=destination_airport.strip().upper())):
             destination_airport = destination_airport
 
-        # If airline is LCC sets all costs scenario to low,
-        # elif destination airport is in group 1 airports (more than 25 million passengers) set scenario to high
-        # else scenario default is base
+            # If airline is LCC sets all costs scenario to low,
+            # elif destination airport is in group 1 airports (more than 25 million passengers) set scenario to high
+            # else scenario default is base
         if is_low_cost_airline is not None or destination_airport is not None:
             scenario = get_fixed_cost_scenario(is_LCC_airline=is_low_cost_airline,
                                                destination_airport_ICAO=destination_airport)
@@ -138,6 +133,17 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             maintenance_costs_scenario = scenario if maintenance_costs_scenario is None else maintenance_costs_scenario
             fuel_costs_scenario = scenario if fuel_costs_scenario is None else fuel_costs_scenario
             passenger_scenario = scenario if passenger_scenario is None else passenger_scenario
+
+        # without passengers number input inserted use passengers load factor based on scenario either inserted by user
+        # or indirectly obtained by previous if statement
+        if passengers_number is None:
+            passengers_number = get_passengers(aircraft_type=aircraft_cluster, scenario=passenger_scenario)
+
+        number_missed_connection_passengers = 0 if missed_connection_passengers is None else len(
+            missed_connection_passengers)
+
+        if passengers_number is not None:
+            passengers_number = passengers_number - number_missed_connection_passengers
 
         # CREW COSTS
         # NO crew costs input, either manage as zero costs or choose a default scenario
@@ -155,7 +161,7 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             raise FunctionInputParametersConflictError("CREW")
 
         # MAINTENANCE COSTS
-        # NO maintenance costs input
+        # NO maintenance costs input,  either manage as zero costs or choose a default scenario
         if maintenance_costs_exact_value is None and maintenance_costs_scenario is None:
             # maintenance_costs = zero_costs()
             maintenance_costs = get_maintenance_costs(aircraft_cluster=aircraft_cluster,
@@ -171,7 +177,7 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             raise FunctionInputParametersConflictError("MAINTENANCE")
 
         # FUEL COSTS
-        # No fuel costs input
+        # No fuel costs input,  either manage as zero costs or choose a default scenario
         if fuel_costs_exact_value is None and fuel_costs_scenario is None:
             fuel_costs = zero_costs()
             # fuel_costs = get_fuel_costs(aircraft_cluster=aircraft_cluster, scenario="base", flight_phase=flight_phase)
