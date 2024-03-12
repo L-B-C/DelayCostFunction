@@ -5,7 +5,7 @@ from CostPackage.Aircraft.aircraft import is_wide_body
 from CostPackage.Aircraft.aircraft_cluster import get_aircraft_cluster
 from CostPackage.Scenario.scenario import get_scenario
 
-df_seats = pd.read_csv(os.path.join(os.path.dirname(__file__), "AircraftSeats_2019.csv"))
+df_seats = pd.read_csv(os.path.join(os.path.dirname(__file__), "../Aircraft/AircraftSeats_2019.csv"))
 
 
 def get_passengers(aircraft_type: str, scenario: str = None, load_factor: float = None) -> int:
