@@ -114,6 +114,12 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
 
         flight_phase = get_flight_phase(flight_phase_input.strip().upper())
 
+        # to calculate passengers hard costs, haul determined according to flight length is needed
+        # if flight_length is None a default value could be used to have a Medium Haul e.g. flight_length=2000
+        # this could be valid only AT GATE, default flight_length value could disrupt fuel costs in EN ROUTE phase
+        # if flight_length is None:
+        #   haul = get_haul(fixed_flight_length)
+
         if flight_length is not None:
             haul = get_haul(flight_length)
 
