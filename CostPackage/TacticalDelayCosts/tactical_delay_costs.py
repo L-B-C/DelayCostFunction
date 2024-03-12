@@ -5,7 +5,8 @@ from typing import Callable, List, Tuple, Union
 from CostPackage.Aircraft.aircraft_cluster import get_aircraft_cluster, AircraftClusterError
 from CostPackage.Airport.airport import is_valid_airport_icao, AirportCodeError
 from CostPackage.Crew.crew_costs import get_crew_costs_from_exact_value, get_crew_costs, InvalidCrewCostsValueError
-from CostPackage.Curfew.curfew_costs import get_curfew_costs_from_exact_value, get_curfew_costs
+from CostPackage.Curfew.curfew_costs import get_curfew_costs_from_exact_value, get_curfew_costs, \
+    InvalidCurfewCostsValueError
 from CostPackage.FlightPhase.flight_phase import get_flight_phase, FlightPhaseError
 from CostPackage.Fuel.fuel_costs import get_fuel_costs_from_exact_value, InvalidFuelCostsValueError
 from CostPackage.Haul.haul import get_haul, HaulError
@@ -13,8 +14,8 @@ from CostPackage.Maintenance.maintenance_costs import get_maintenance_costs_from
     InvalidMaintenanceCostsValueError
 from CostPackage.Passenger.Hard.hard_costs import get_hard_costs
 from CostPackage.Passenger.Soft.soft_costs import get_soft_costs
-from CostPackage.Passenger.passenger import get_passengers
-from CostPackage.Scenario.scenario import get_fixed_cost_scenario
+from CostPackage.Passenger.passenger import get_passengers, PassengersLoadFactorError
+from CostPackage.Scenario.scenario import get_fixed_cost_scenario, ScenarioError
 
 
 def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NECESSARY PARAMETERS
@@ -246,6 +247,12 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
     except HaulError as haul_error:
         print(haul_error.message)
 
+    except ScenarioError as scenario_error:
+        print(scenario_error.message)
+
+    except PassengersLoadFactorError as passengers_load_factor_error:
+        print(passengers_load_factor_error.message)
+
     except InvalidCrewCostsValueError as invalid_crew_costs_value_error:
         print(invalid_crew_costs_value_error.message)
 
@@ -254,6 +261,9 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
 
     except InvalidFuelCostsValueError as invalid_fuel_costs_value_error:
         print(invalid_fuel_costs_value_error.message)
+
+    except InvalidCurfewCostsValueError as invalid_curfew_costs_value_error:
+        print(invalid_curfew_costs_value_error.message)
 
     except FunctionInputParametersConflictError as function_input_parameters_conflict_error:
         print(function_input_parameters_conflict_error.message)
