@@ -140,9 +140,10 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             passenger_scenario = scenario if passenger_scenario is None else passenger_scenario
 
         # CREW COSTS
-        # NO crew costs input
+        # NO crew costs input, either manage as zero costs or choose a default scenario
         if crew_costs_exact_value is None and crew_costs_scenario is None:
-            crew_costs = zero_costs()
+            # crew_costs = zero_costs()
+            crew_costs = get_crew_costs(aircraft_cluster=aircraft_cluster, scenario="BASE")
         # Crew costs based on exact value
         elif crew_costs_exact_value is not None and crew_costs_scenario is None:
             crew_costs = get_crew_costs_from_exact_value(crew_costs_exact_value)
@@ -156,7 +157,9 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         # MAINTENANCE COSTS
         # NO maintenance costs input
         if maintenance_costs_exact_value is None and maintenance_costs_scenario is None:
-            maintenance_costs = zero_costs()
+            # maintenance_costs = zero_costs()
+            maintenance_costs = get_maintenance_costs(aircraft_cluster=aircraft_cluster,
+                                                      scenario="BASE", flight_phase=flight_phase)
         # Maintenance costs based on exact value
         elif maintenance_costs_exact_value is not None and maintenance_costs_scenario is None:
             maintenance_costs = get_maintenance_costs_from_exact_value(maintenance_costs_exact_value)
@@ -171,6 +174,7 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         # No fuel costs input
         if fuel_costs_exact_value is None and fuel_costs_scenario is None:
             fuel_costs = zero_costs()
+            # fuel_costs = get_fuel_costs(aircraft_cluster=aircraft_cluster, scenario="base", flight_phase=flight_phase)
         # Fuel costs based on exact value
         elif fuel_costs_exact_value is not None and fuel_costs_scenario is None:
             fuel_costs = get_fuel_costs_from_exact_value(fuel_costs_exact_value)
@@ -192,7 +196,8 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             curfew_costs = zero_costs()
         elif curfew_violated is True and curfew is not None:
             curfew_threshold = curfew[0] if curfew is tuple else curfew
-            curfew_passengers = curfew[1] if curfew is tuple else passengers_number + number_missed_connection_passengers
+            curfew_passengers = curfew[
+                1] if curfew is tuple else passengers_number + number_missed_connection_passengers
             curfew_costs = get_curfew_costs(aircraft_cluster=aircraft_cluster, curfew_passengers=curfew_passengers)
         else:  # Both parameters are not None, situation managed as a conflict
             raise FunctionInputParametersConflictError("CURFEW")
@@ -215,14 +220,13 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                 cost_function = missed_connection_passengers_hard_costs if cost_type == 'hard' else missed_connection_passengers_soft_costs
                 return cost_function(delay if delay < passenger[0] else passenger[1])
 
-            def passengers_costs(delay):
-                return (passengers_hard_costs(delay) + passengers_soft_costs(delay) + sum(
-                    considered_passenger_costs(delay, passenger, 'hard') for passenger in
-                    missed_connection_passengers) + sum(
-                    considered_passenger_costs(delay, passenger, 'soft') for passenger in
-                    missed_connection_passengers))
+            passengers_costs = lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay) + sum(
+                considered_passenger_costs(delay, passenger, 'hard') for passenger in
+                missed_connection_passengers) + sum(
+                considered_passenger_costs(delay, passenger, 'soft') for passenger in
+                missed_connection_passengers)
         else:
-            return lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay)
+            passengers_costs = lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay)
 
     except AircraftClusterError as aircraft_cluster_error:
         print(aircraft_cluster_error.message)
