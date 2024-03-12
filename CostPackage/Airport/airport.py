@@ -22,12 +22,11 @@ def is_valid_airport_icao(airport_icao: str):
         raise AirportCodeError
 
 
-# def get_airport_country(airport_icao: str):
-#     if is_valid_airport_icao(airport_icao):
-#         return df_airports.query("ICAO==airport_icao")["Country"]
-
-
 # airport is in group 1 if it has more than 25 million passengers
+# groups according to Airport Council International (ACI) based on number of passengers per year per airport
+# calculation done by RDC Aviation
+# see following document at page 28/39
+# https://www.beacon-sesar.eu/wp-content/uploads/2022/10/893100-BEACON-D3.2-Industry-briefing-on-updates-to-the-European-cost-of-delay-V.01.01.00-1.pdf
 def is_group_1_airport(airport_icao: str):
     if is_valid_airport_icao(airport_icao):
         if airport_icao in group_1_airports.to_list():

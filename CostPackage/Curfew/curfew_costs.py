@@ -13,6 +13,8 @@ def get_curfew_costs_from_exact_value(curfew_costs_exact_value: float) -> float:
 df_curfew = pd.read_csv(os.path.join(os.path.dirname(__file__), "curfew.csv"))
 
 
+# -------------------------------------------------------------------------------------------------
+# ---------- code commented as found in Cost Models inserted for further considerations------------
 # Curfew costs
 # def get_curfew_value(air_cluster: str, cost_scenario: str, curfew_passengers: int) -> float:
 #     if air_cluster in wide_body_list:
@@ -21,8 +23,9 @@ df_curfew = pd.read_csv(os.path.join(os.path.dirname(__file__), "curfew.csv"))
 #         return curfew_passengers * 102.75
 #     else:
 #         return curfew_passengers * 136.59
-#
 # to improve
+# --------------------------------------------------------------------------------------------------
+
 def get_curfew_costs(aircraft_cluster: str, curfew_passengers: int, scenario: str = None) -> float:
     return curfew_passengers * 300 + df_curfew[df_curfew.AirCluster == aircraft_cluster].Cost.iloc[0]
 
