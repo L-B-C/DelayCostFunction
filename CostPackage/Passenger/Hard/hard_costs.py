@@ -52,11 +52,10 @@ def get_hard_costs(passengers: int, scenario: str, haul: str) -> Callable:
                                              else REIMBURSEMENT_RATE)
     passenger_care_support_list = ["care", "reimbursement_rebooking", "compensation", "accommodation"]
     waiting_passenger_costs = 0
+    reimbursement_passenger_costs = 0
     for passenger_care_support_type in passenger_care_support_list:
         waiting_passenger_costs += (get_cost(passenger_care_support_type, haul)
                                     * get_waiting_rate(passenger_care_support_type, haul)).to_numpy()
-    reimbursement_passenger_costs = 0
-    for passenger_care_support_type in passenger_care_support_list:
         reimbursement_passenger_costs += (get_cost(passenger_care_support_type, haul)
                                           * get_reimbursement_rate(passenger_care_support_type, haul)).to_numpy()
 
