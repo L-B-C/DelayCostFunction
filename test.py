@@ -23,12 +23,12 @@ cost_function_with_missed_connections_20 = get_tactical_delay_costs(aircraft_typ
 # passenger number as 80% of max capacity no passengers with missed connections
 
 cost_function_B738 = get_tactical_delay_costs(aircraft_type="B738", flight_length=2000, flight_phase_input="AT_GATE",
-                                              passenger_scenario="BASE", crew_costs_scenario="BASE",
-                                              maintenance_costs_scenario="BASE", passengers_number=151)
+                                              passenger_scenario="BASE", crew_costs="BASE",
+                                              maintenance_costs="BASE", passengers_number=151)
 # 10% of boarded passengers with connections
 cost_function_B738_mc = get_tactical_delay_costs(aircraft_type="B738", flight_length=2000, flight_phase_input="AT_GATE",
-                                                 passenger_scenario="BASE", crew_costs_scenario="BASE",
-                                                 maintenance_costs_scenario="BASE", passengers_number=151,
+                                                 passenger_scenario="BASE", crew_costs="BASE",
+                                                 maintenance_costs="BASE", passengers_number=151,
                                                  missed_connection_passengers=[(33, 177), (38, 247), (45, 151),
                                                                                (107, 273),
                                                                                (18, 147), (35, 215), (44, 284),
@@ -38,15 +38,15 @@ cost_function_B738_mc = get_tactical_delay_costs(aircraft_type="B738", flight_le
 # Boeing 738, flight length (2000km - medium haul), flight phase "AT_GATE (no fuel costs), no curfew,
 # passenger number as 80% of max capacity no passengers with missed connections,
 cost_function_B744 = get_tactical_delay_costs(aircraft_type="B744", flight_length=2000, flight_phase_input="AT_GATE",
-                                              passenger_scenario="BASE", crew_costs_scenario="BASE",
-                                              maintenance_costs_scenario="BASE", passengers_number=364)
+                                              passenger_scenario="BASE", crew_costs="BASE",
+                                              maintenance_costs="BASE", passengers_number=364)
 
 # 10% of boarded passengers with connections
 # Boeing 738, flight length (2000km - medium haul), flight phase "AT_GATE (no fuel costs), no curfew,
 # passenger number as 80% of max capacity no passengers with missed connections,
 cost_function_B744_mc = get_tactical_delay_costs(aircraft_type="B744", flight_length=2000, flight_phase_input="AT_GATE",
-                                                 passenger_scenario="BASE", crew_costs_scenario="BASE",
-                                                 maintenance_costs_scenario="BASE", passengers_number=364,
+                                                 passenger_scenario="BASE", crew_costs="BASE",
+                                                 maintenance_costs="BASE", passengers_number=364,
                                                  missed_connection_passengers=[(33, 177), (38, 247), (45, 151),
                                                                                (18, 147), (35, 215), (44, 284),
                                                                                (148, 259), (192, 294), (70, 194),
@@ -98,8 +98,8 @@ def get_cost_values(sel_aircraft, num_passengers, missed_connections=False):
                                                  flight_length=2000,
                                                  flight_phase_input="AT_GATE",
                                                  passenger_scenario="BASE",
-                                                 crew_costs_scenario="BASE",
-                                                 maintenance_costs_scenario="BASE",
+                                                 crew_costs="BASE",
+                                                 maintenance_costs="BASE",
                                                  passengers_number=num_passengers,
                                                  missed_connection_passengers=None if not missed_connections
                                                  else delays_thresholds[:int(round(num_passengers * 0.1))])
