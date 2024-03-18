@@ -5,6 +5,10 @@ from CostPackage.TacticalDelayCosts.tactical_delay_costs import *
 
 # help(get_tactical_delay_costs)
 
+# Array of delays to analyze
+delays = np.arange(0, 305, 5)
+# print(delays)
+
 cost_function = get_tactical_delay_costs(aircraft_type="A320", flight_length=800, flight_phase_input="AT_GATE",
                                          passenger_scenario="BASE", passengers_number=170)
 cost_function_with_missed_connections = get_tactical_delay_costs(aircraft_type="A320", flight_length=800,
@@ -60,8 +64,7 @@ cost_function_B744_mc = get_tactical_delay_costs(aircraft_type="B744", flight_le
                                                                                (122, 256), (71, 278), (62, 234),
                                                                                (187, 287), (133, 296), (107, 273)])
 
-delays = np.arange(0, 305, 5)
-# print(delays)
+
 
 cost_values_738 = [cost_function_B738(d) for d in delays]
 cost_values_738_mc = [cost_function_B738_mc(d) for d in delays]

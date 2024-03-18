@@ -72,10 +72,19 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
              react_curfew: Union[tuple[float, str], tuple[float, int]] = None
 
         """
+    # DEFAULT VALUES
+    haul = "MediumHaul"
+    scenario = "BaseScenario"
+    aircraft_cluster = None
+    flight_phase = None
+    total_crew_costs = lambda delay: 0
+    total_maintenance_costs = lambda delay: 0
+    total_fuel_costs = lambda delay: 0
+    curfew_costs = lambda delay: 0
+    passengers_hard_costs = lambda delay: 0
+    passengers_soft_costs = lambda delay: 0
 
     # Zero costs lambda if both scenario and exact value are None
-    global haul
-
     def zero_costs():
         return lambda delay: 0
 
@@ -206,9 +215,9 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             def considered_passenger_costs(delay, passenger, cost_type):
                 # Set only care if delay is less than passenger connection threshold
                 # Set 0 if delay < passenger connection threshold
-                cost_function = missed_connection_passengers_hard_costs if cost_type == 'hard' \
+                considered_passengers_cost_function = missed_connection_passengers_hard_costs if cost_type == 'hard' \
                     else missed_connection_passengers_soft_costs
-                return cost_function(delay if delay < passenger[0] else passenger[1])
+                return considered_passengers_cost_function(delay if delay < passenger[0] else passenger[1])
 
             passengers_costs = lambda delay: passengers_hard_costs(delay) + passengers_soft_costs(delay) + sum(
                 considered_passenger_costs(delay, passenger, 'hard') for passenger in
