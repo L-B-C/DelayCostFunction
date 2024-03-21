@@ -2,7 +2,7 @@ from CostPackage.TacticalDelayCosts import *
 
 
 def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NECESSARY PARAMETERS
-                             passengers_number: int = None, passenger_scenario: str = None,
+                             passengers: int | str = None,
                              is_low_cost_airline: bool = None, flight_length: float = None,
                              origin_airport: str = None, destination_airport: str = None,
                              curfew_violated: bool = False, curfew_costs_exact_value: float = None,
@@ -18,10 +18,11 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
             aircraft(ICAO code)
         flight_phase_input: str
             can be AT_GATE, TAXI or EN_ROUTE
-        passengers_number: int=None
+        passengers: int | str = None
+            int is provided means passengers number,
             actual number of passengers boarded on the aircraft,
-            when not provided a generic cost per passenger will be generated
-        passenger_scenario: str =None
+            when not provided the base scenario for passengers number will be considered
+            str is provided means passengers scenario,
             "low" 65% of seats capacity: 
             "base" 80% of seats capacity is the normal scenario (most common)
             "high" 95% of seats capacity
@@ -74,7 +75,9 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         """
     # DEFAULT VALUES
     haul = "MediumHaul"
-    scenario = "BaseScenario"
+    scenario = "base"
+    passenger_scenario = "base"
+    passengers_number = 0
     aircraft_cluster = None
     flight_phase = None
     total_crew_costs = lambda delay: 0
@@ -124,17 +127,18 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         if is_low_cost_airline is not None or destination_airport is not None:
             scenario = get_fixed_cost_scenario(is_LCC_airline=is_low_cost_airline,
                                                destination_airport_ICAO=destination_airport)
-            passenger_scenario = scenario if passenger_scenario is None else passenger_scenario
+            passenger_scenario = scenario if passengers is None or type(passengers) is int else passengers
 
         # without passengers number input inserted use passengers load factor based on scenario either inserted by user
         # or indirectly obtained by previous if statement
-        if passengers_number is None:
+        if passengers is not None and type(passengers) is str:
+            passenger_scenario = passengers
             passengers_number = get_passengers(aircraft_type=aircraft_cluster, scenario=passenger_scenario)
 
         number_missed_connection_passengers = 0 if missed_connection_passengers is None else len(
             missed_connection_passengers)
 
-        if passengers_number is not None:
+        if passengers is not None and type(passengers) is int:
             passengers_number = passengers_number - number_missed_connection_passengers
 
         # CREW COSTS
