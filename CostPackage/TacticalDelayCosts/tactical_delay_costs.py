@@ -73,7 +73,7 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
              react_curfew: Union[tuple[float, str], tuple[float, int]] = None
 
         """
-    # DEFAULT VALUES
+    # DEFAULT
     haul = "MediumHaul"
     scenario = "base"
     passenger_scenario = "base"
