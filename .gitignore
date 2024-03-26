@@ -5,4 +5,5 @@ DelayCostFunction.egg-info/
 venv/
 .xml
 .iml
-test.py
+test/test.py
+test/
