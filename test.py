@@ -7,7 +7,17 @@ from CostPackage.TacticalDelayCosts.tactical_delay_costs import *
 
 # Array of delays to analyze
 delays = np.arange(0, 305, 5)
+
+
 # print(delays)
+
+# Function to extract cost function and calculate costs for given delays
+def calculate_costs_for_delays(result, delays):
+    cost_function = result['cost_function']  # Extracting the cost function
+    return [cost_function(d) for d in delays]
+
+
+
 
 cost_function = get_tactical_delay_costs(aircraft_type="A320", flight_length=800, flight_phase_input="AT_GATE",
                                          passenger_scenario="BASE", passengers_number=170)
@@ -64,8 +74,6 @@ cost_function_B744_mc = get_tactical_delay_costs(aircraft_type="B744", flight_le
                                                                                (122, 256), (71, 278), (62, 234),
                                                                                (187, 287), (133, 296), (107, 273)])
 
-
-
 cost_values_738 = [cost_function_B738(d) for d in delays]
 cost_values_738_mc = [cost_function_B738_mc(d) for d in delays]
 
@@ -106,7 +114,7 @@ def get_cost_values(sel_aircraft, num_passengers, missed_connections=False):
                                                  passengers_number=num_passengers,
                                                  missed_connection_passengers=None if not missed_connections
                                                  else delays_thresholds[:int(round(num_passengers * 0.1))])
-    print(sel_aircraft, missed_connections,  delays_thresholds[:int(round(num_passengers * 0.1))], "\n")
+    print(sel_aircraft, missed_connections, delays_thresholds[:int(round(num_passengers * 0.1))], "\n")
     return [int(round(cost_function_sel(d))) for d in delays_sel]
 
 

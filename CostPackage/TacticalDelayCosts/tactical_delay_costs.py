@@ -42,14 +42,14 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         curfew_costs_exact_value: float=None
             total cost of curfew violation in EUR
         crew_costs: float | str =None
-            float value means costs of entire crew (pilots and cabin crew) in EUR/min by user
+            float value means costs of entire crew (pilots and cabin crew) in EUR/min
             str value represents the crew costs scenario which can be either "low", "base" or "high"
-            "low" means zero EUR/hour costs for the entire crew
+            "low" means zero EUR/min costs for the entire crew
             "base" is the normal scenario (most common)
             "high" is the expensive scenario
         maintenance_costs: float | str = None
-            float value means costs expressed in EUR/min provided directly by user
-            (CAREFUL tactical maintenance costs may be very different at the various flight phases)
+            float value means costs expressed in EUR/min
+            (ATTENTION tactical maintenance costs may be very different at the various flight phases)
             str value represents the maintenance costs scenario which can be either "low", "base" or "high"
             depending on aircraft age, maintenance status etc.
             "low" can be applied for example on newer aircraft or if ordinary maintenance was recently made
@@ -73,6 +73,11 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
              react_curfew: Union[tuple[float, str], tuple[float, int]] = None
 
         """
+
+    # Zero costs lambda if both scenario and exact value are None
+    def zero_costs():
+        return lambda delay: 0
+
     # DEFAULT
     haul = "MediumHaul"
     scenario = "base"
@@ -80,16 +85,12 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
     passengers_number = 0
     aircraft_cluster = None
     flight_phase = None
-    total_crew_costs = lambda delay: 0
-    total_maintenance_costs = lambda delay: 0
-    total_fuel_costs = lambda delay: 0
-    curfew_costs = lambda delay: 0
-    passengers_hard_costs = lambda delay: 0
-    passengers_soft_costs = lambda delay: 0
-
-    # Zero costs lambda if both scenario and exact value are None
-    def zero_costs():
-        return lambda delay: 0
+    total_crew_costs = zero_costs()
+    total_maintenance_costs = zero_costs()
+    total_fuel_costs = zero_costs()
+    curfew_costs = zero_costs()
+    passengers_hard_costs = zero_costs()
+    passengers_soft_costs = zero_costs()
 
     class FunctionInputParametersError(Exception):
         def __init__(self, conflict_type: str):
