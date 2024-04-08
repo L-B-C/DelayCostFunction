@@ -25,7 +25,7 @@ The `get_tactical_delay_costs` function calculates the cost of delay for a speci
   
 - `flight_phase_input` (str, required): The phase of the flight. Can be `AT_GATE`, `TAXI`, or `EN_ROUTE`.
 
-- `passengers` (int or bool, optional): The actual number of passengers on board or the passenger scenario (`low` (65% capacity), `base` (80% capacity, most common), or `high` (95% capacity). For wide-body aircraft, capacity is set to 85%) If not provided, the default value for passenger scenario and the respective passengers number is generated.
+- `passengers` (int or str, optional): The actual number of passengers on board as integeger (if not provided, a generic cost per passenger is generated) or passenger load scenario as string, it can be `low` (65% capacity), `base` (80% capacity, most common), or `high` (95% capacity). For wide-body aircraft, capacity is set to 85%.
 
 - `is_low_cost_airline` (bool, optional): Set to `true` if the flight is considered low-cost.
 
@@ -39,11 +39,12 @@ The `get_tactical_delay_costs` function calculates the cost of delay for a speci
 
 - `curfew_costs_exact_value` (float, optional): Total cost of curfew violation in EUR.
 
-- `crew_costs` (float or str, optional): Costs for the entire crew (pilots and cabin crew) in EUR/min or crew cost scenario, which can be `low`, `base`, or `high`.
+- `crew_costs` (float or str, optional): Costs for the entire crew (pilots and cabin crew) in EUR/min as float or string for crew cost scenario, which can be `low`, `base`, or `high`.
 
-- `maintenance_costs` (float or str, optional): Directly provided maintenance costs in EUR/min. or maintenance cost scenario, which can be `low`, `base`, or `high`.
+- `maintenance_costs` (float or str, optional): Directly provided maintenance costs in EUR/min (float) or string representing maintenance cost scenario, which can be `low`, `base`, or `high`.
 
-- `fuel_costs` (float or str, optional): Directly provided fuel costs in EUR/min or fuel cost scenario. NOTE: Fuel costs are currently unavailable for calculation.
+- `fuel_costs` (float or str, optional): Directly provided fuel costs in EUR/min (float) or string representing fuel cost scenario. NOTE: Fuel costs are currently unavailable for calculation.
+
 
 - `missed_connection_passengers` (List[Tuple], optional): List of tuples representing passengers who may miss connections. Each tuple contains the delay threshold and the perceived delay at the final destination.
   
