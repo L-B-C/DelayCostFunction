@@ -9,7 +9,7 @@ class CostObject:
         cost_function: lambda
             the lambda function which take as input the delay and returns the cost
 
-        params_dixt: dict
+        params_dict: dict
             the dictonary contanining all parameters of the cost object
 
         get_params() ->list(str):
