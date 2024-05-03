@@ -89,20 +89,52 @@ class CostObject:
         }
 
     def get_params(self):
-        return (list(self.params_dict.keys())[0] + list(list(self.params_dict.keys())[1].keys())
-                + list(list(self.params_dict.keys())[2].keys()))
+
+        key_list = list(self.params_dict.keys())
+        params = []
+
+        if len(key_list) == 3:
+            params.append(key_list[0])
+
+            # Accessing nested dictionary keys and converting them to string
+            if isinstance(self.params_dict[key_list[1]], dict):
+                params.extend(list(self.params_dict[key_list[1]].keys()))
+
+            if isinstance(self.params_dict[key_list[2]], dict):
+                params.extend(list(self.params_dict[key_list[2]].keys()))
+
+        return params
+
+        # return (list(self.params_dict.keys())[0] + list(list(self.params_dict.keys())[1].keys())
+        #         + list(list(self.params_dict.keys())[2].keys()))
 
     def info(self):
 
-        print((list(self.params_dict.keys())[0]), "\n")
+        top_level_keys = list(self.params_dict.keys())
 
+        print(top_level_keys[0], "\n")
         print("Input parameters")
-        l = list(list(self.params_dict.keys())[1].keys())
-        for key in l:
-            print(key)
+
+        if isinstance(self.params_dict[top_level_keys[1]], dict):
+            input_keys = list(self.params_dict[top_level_keys[1]].keys())
+            for key in input_keys:
+                print(key)
 
         print("\nDerived parameters")
+        if isinstance(self.params_dict[top_level_keys[2]], dict):
+            derived_keys = list(self.params_dict[top_level_keys[2]].keys())
+            for key in derived_keys:
+                print(key)
 
-        l = list(list(self.params_dict.keys())[2].keys())
-        for key in l:
-            print(key)
+        # print((list(self.params_dict.keys())[0]), "\n")
+        #
+        # print("Input parameters")
+        # l = list(list(self.params_dict.keys())[1].keys())
+        # for key in l:
+        #     print(key)
+        #
+        # print("\nDerived parameters")
+        #
+        # l = list(list(self.params_dict.keys())[2].keys())
+        # for key in l:
+        #     print(key)
