@@ -73,6 +73,8 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         curfew: Tuple[curfew_time: float, n_passenger: int] or float, default None,
              react_curfew: Union[tuple[float, str], tuple[float, int]] = None
 
+
+        return: CostObject
         """
 
     # Zero costs lambda if both scenario and exact value are None
