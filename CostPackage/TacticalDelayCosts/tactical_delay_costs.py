@@ -12,7 +12,7 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                              fuel_costs: float | str = None,
                              missed_connection_passengers: List[Tuple] = None,
                              curfew: tuple[float, int] | float = None
-                             ) -> dict:
+                             ) -> CostObject:
     """Generate cost function of delay of a given flight according to the specifics
     Parameters:
         aircraft_type: str
@@ -278,9 +278,12 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
         # Dictionary to store both the function and the input parameters
 
         cost_object = CostObject(cost_function, aircraft_type, flight_phase_input,
-                 is_low_cost_airline, flight_length, origin_airport, destination_airport, curfew_violated, curfew_costs_exact_value,
-                 crew_costs, maintenance_costs, fuel_costs, missed_connection_passengers, curfew, aircraft_cluster, flight_phase, haul,
-                 scenario, passenger_scenario, passengers_number, total_crew_costs, total_maintenance_costs, total_fuel_costs, curfew_costs,
-                 passengers_hard_costs, passengers_soft_costs)
+                                 is_low_cost_airline, flight_length, origin_airport, destination_airport,
+                                 curfew_violated, curfew_costs_exact_value,
+                                 crew_costs, maintenance_costs, fuel_costs, missed_connection_passengers, curfew,
+                                 aircraft_cluster, flight_phase, haul,
+                                 scenario, passenger_scenario, passengers_number, total_crew_costs,
+                                 total_maintenance_costs, total_fuel_costs, curfew_costs,
+                                 passengers_hard_costs, passengers_soft_costs)
 
         return cost_object

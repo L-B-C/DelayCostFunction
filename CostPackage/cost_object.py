@@ -1,16 +1,17 @@
 class CostObject:
     def __init__(self, cost_function, aircraft_type, flight_phase_input,
-                 is_low_cost_airline, flight_length, origin_airport, destination_airport, curfew_violated, curfew_costs_exact_value,
-                 crew_costs, maintenance_costs, fuel_costs, missed_connection_passengers, curfew, aircraft_cluster, flight_phase, haul,
-                 scenario, passenger_scenario, passengers_number, total_crew_costs, total_maintenance_costs, total_fuel_costs, curfew_costs,
+                 is_low_cost_airline, flight_length, origin_airport, destination_airport, curfew_violated,
+                 curfew_costs_exact_value, crew_costs, maintenance_costs, fuel_costs, missed_connection_passengers,
+                 curfew, aircraft_cluster, flight_phase, haul, scenario, passenger_scenario, passengers_number,
+                 total_crew_costs, total_maintenance_costs, total_fuel_costs, curfew_costs,
                  passengers_hard_costs, passengers_soft_costs):
-        """Object containg the result of the cost function computation
+        """Object containing the result of the cost function computation
 
         cost_function: lambda
             the lambda function which take as input the delay and returns the cost
 
         params_dict: dict
-            the dictonary contanining all parameters of the cost object
+            the dictionary containing all parameters of the cost object
 
         get_params() ->list(str):
             methods which return all parameters included in the cost object
