@@ -1,4 +1,5 @@
 from CostPackage.TacticalDelayCosts import *
+from CostPackage.cost_object import CostObject
 
 
 def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NECESSARY PARAMETERS
@@ -273,38 +274,11 @@ def get_tactical_delay_costs(aircraft_type: str, flight_phase_input: str,  # NEC
                                        + passengers_costs(delay) + curfew_costs(delay))
 
         # Dictionary to store both the function and the input parameters
-        result = {
-            "cost_function": cost_function,
-            "parameters": {
-                "aircraft_type": aircraft_type,
-                "flight_phase_input": flight_phase_input,
-                "passengers_number": passengers_number,
-                "passenger_scenario": passenger_scenario,
-                "is_low_cost_airline": is_low_cost_airline,
-                "flight_length": flight_length,
-                "origin_airport": origin_airport,
-                "destination_airport": destination_airport,
-                "curfew_violated": curfew_violated,
-                "curfew_costs_exact_value": curfew_costs_exact_value,
-                "crew_costs": crew_costs,
-                "maintenance_costs": maintenance_costs,
-                "fuel_costs": fuel_costs,
-                "missed_connection_passengers": missed_connection_passengers,
-                "curfew": curfew
-            },
-            "derived_parameters": {
-                "aircraft_cluster": aircraft_cluster,
-                "flight_phase": flight_phase,
-                "haul_type": haul,
-                "final_cost_scenario": scenario,
-                "final_passenger_scenario": passenger_scenario,
-                "adjusted_passengers_number": passengers_number,
-                "total_crew_costs_function": total_crew_costs,
-                "total_maintenance_costs_function": total_maintenance_costs,
-                "total_fuel_costs_function": total_fuel_costs,
-                "curfew_costs_function": curfew_costs,
-                "passengers_hard_costs_function": passengers_hard_costs,
-                "passengers_soft_costs_function": passengers_soft_costs
-            }
-        }
-        return result
+
+        cost_object = CostObject(cost_function, aircraft_type, flight_phase_input,
+                 is_low_cost_airline, flight_length, origin_airport, destination_airport, curfew_violated, curfew_costs_exact_value,
+                 crew_costs, maintenance_costs, fuel_costs, missed_connection_passengers, curfew, aircraft_cluster, flight_phase, haul,
+                 scenario, passenger_scenario, passengers_number, total_crew_costs, total_maintenance_costs, total_fuel_costs, curfew_costs,
+                 passengers_hard_costs, passengers_soft_costs)
+
+        return cost_object
